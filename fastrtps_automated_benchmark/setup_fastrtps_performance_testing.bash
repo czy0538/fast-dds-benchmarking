@@ -17,12 +17,12 @@
 print_usage()
 {
     echo "------------------------------------------------------------------------"
-    echo "Scritp to setup Fast-RTPS performance testing environment."
+    echo "Scritp to setup Fast-DDS performance testing environment."
     echo "------------------------------------------------------------------------"
     echo "OPTIONAL ARGUMENTS:"
     echo "   -h             Print help"
-    echo "   -c [directory] The directory to place the Fast-RTPS colcon worksapce [Defaults: ./]"
-    echo "   -b [branch]    The Fast-RTPS branch to use [Defaults: master]"
+    echo "   -c [directory] The directory to place the Fast-DDS colcon worksapce [Defaults: ./]"
+    echo "   -b [branch]    The Fast-DDS branch to use [Defaults: master]"
     echo "   -p [directory] The directory to initialize the python3 virtual environment"
     echo "                  [Defaults: ./fastrtps_performance_python3_env]"
     echo ""
@@ -135,15 +135,15 @@ main ()
     cp ${SCRITP_DIR}/colcon.meta ${COLCON_WS}
     echo "-------------------------------------------------------------------"
 
-    echo "Downloading Fast-RTPS source code"
+    echo "Downloading Fast-DDS source code"
     cd ${COLCON_WS}
-    wget https://raw.githubusercontent.com/eProsima/Fast-RTPS/master/fastrtps.repos
+    wget https://raw.githubusercontent.com/eProsima/Fast-DDS/master/fastdds.repos
     mkdir -p ${COLCON_WS}/src
-    vcs import src < fastrtps.repos
+    vcs import src < fastdds.repos
     echo "-------------------------------------------------------------------"
 
-    echo "Setting Fast-RTPS branch"
-    cd ${COLCON_WS}/src/fastrtps
+    echo "Setting Fast-DDS branch"
+    cd ${COLCON_WS}/src/fastdds
     git checkout ${FASTRTPS_BRANCH}
     if [[ $? != 0 ]]
     then
